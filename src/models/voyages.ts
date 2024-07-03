@@ -20,7 +20,7 @@ export const VoyageValidator: ZodType<VoyageWithUnitTypes> = z
       .array(z.object({ id: z.string() }))
       .min(5, "Please select at least 5 unit types"),
   })
-  .refine((data) => data.arrival > data.departure, {
+  .refine((data) => data.arrival.getTime() > data.departure.getTime(), {
     message: "Scheduled arrival must be after scheduled departure.",
     path: ["scheduledArrival"],
   });
