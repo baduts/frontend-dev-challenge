@@ -1,4 +1,6 @@
 import { type ClassValue, clsx } from "clsx";
+import { addDays } from "date-fns";
+import { type DateRange } from "react-day-picker";
 import { twMerge } from "tailwind-merge";
 
 export function cn(...inputs: ClassValue[]) {
@@ -18,3 +20,8 @@ export async function fetchData(path: string) {
 
   return response.json();
 }
+
+export const defaultDateRange: DateRange = {
+  from: new Date(Date.now()),
+  to: addDays(Date.now(), 20),
+};
